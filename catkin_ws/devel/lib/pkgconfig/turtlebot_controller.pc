@@ -1,0 +1,8 @@
+prefix=/home/parallels/catkin_ws/devel
+
+Name: turtlebot_controller
+Description: Description of turtlebot_controller
+Version: 2.4.2
+Cflags: 
+Libs: -L/home/parallels/catkin_ws/devel/lib 
+Requires: roscpp geometry_msgs joy
