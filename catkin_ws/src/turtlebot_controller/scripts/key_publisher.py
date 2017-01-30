@@ -105,7 +105,7 @@ def getKeyFromTopic():
 
 def getKeyFromKeyboard():
     tty.setraw(sys.stdin.fileno())
-    rlist, _, _ = select.select([sys.stdin], [], [], 1)
+    rlist, _, _ = select.select([sys.stdin], [], [])
     if rlist:
         key = sys.stdin.read(1)
     else:
@@ -122,92 +122,30 @@ def vels(speed,turn):
 if __name__=="__main__":
     settings = termios.tcgetattr(sys.stdin)
 
-    rospy.init_node('turtlebot_controller')
-    pub = rospy.Publisher('~cmd_vel', Twist, queue_size=5)
+    rospy.init_node('turtlebot_key_publisher')
 
-    # Subscribe to the odometry position given by the global transformation of slam
-    keyTopic = 'turtlebot_command_key'
-    rospy.Subscriber(keyTopic, String, setCommandKey)
+    pubKey = rospy.Publisher('turtlebot_command_key', String, queue_size=5)
+    pubTrigger = rospy.Publisher('turtlebot_command_trigger', Bool, queue_size=5)
 
-    sendingCommandsTopic = 'turtlebot_command_trigger'
-    rospy.Subscriber(sendingCommandsTopic, Bool, setSendingCommands)
-
-    x = 0
-    th = 0
-    status = 0
-    count = 0
-    acc = 0.1
-    target_speed = 0
-    target_turn = 0
-    control_speed = 0
-    control_turn = 0
     try:
         print msg
-        print vels(speed,turn)
         while(1):
-            key = getKeyFromTopic()
-            if key in moveBindings.keys():
-                x = moveBindings[key][0]
-                th = moveBindings[key][1]
-                count = 0
-            elif key in speedBindings.keys():
-                speed = speed * speedBindings[key][0]
-                turn = turn * speedBindings[key][1]
-                count = 0
+            key = getKeyFromKeyboard()
 
-                print vels(speed,turn)
-                if (status == 14):
-                    print msg
-                status = (status + 1) % 15
-            elif key == ' ' or key == 'k' :
-                x = 0
-                th = 0
-                control_speed = 0
-                control_turn = 0
-            else:
-                count = count + 1
-                if count > 4:
-                    x = 0
-                    th = 0
-                if (key == '\x03'):
-                    break
+            print "pubKey_1: " + str(key)
+            if key != '':
+                pubKey.publish(key)
 
-            target_speed = speed * x
-            target_turn = turn * th
-
-            if target_speed > control_speed:
-                control_speed = min( target_speed, control_speed + 0.02 )
-            elif target_speed < control_speed:
-                control_speed = max( target_speed, control_speed - 0.02 )
-            else:
-                control_speed = target_speed
-
-            if target_turn > control_turn:
-                control_turn = min( target_turn, control_turn + 0.1 )
-            elif target_turn < control_turn:
-                control_turn = max( target_turn, control_turn - 0.1 )
-            else:
-                control_turn = target_turn
-
-            twist = Twist()
-            twist.linear.x = control_speed; twist.linear.y = 0; twist.linear.z = 0
-            twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = control_turn
-
-            print "publishing_1: " + str(twist.linear.x) + " - " + str(twist.angular.z)
-            pub.publish(twist)
 
             #print("loop: {0}".format(count))
             #print("target: vx: {0}, wz: {1}".formatl(target_speed, target_turn))
             #print("publihsed: vx: {0}, wz: {1}".format(twist.linear.x, twist.angular.z))
-            time.sleep(1)
+            # time.sleep(0.1)
     except KeyboardInterrupt:
-        print "Interrupt"
+        print "Keyboard Interrupt"
         pass
 
     finally:
-        twist = Twist()
-        twist.linear.x = 0; twist.linear.y = 0; twist.linear.z = 0
-        twist.angular.x = 0; twist.angular.y = 0; twist.angular.z = 0
         print "publishing_2: " + str(twist.linear.x) + " - " + str(twist.angular.z)
         pub.publish(twist)
 
