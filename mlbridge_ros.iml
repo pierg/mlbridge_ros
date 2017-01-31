@@ -2,7 +2,10 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/catkin_ws/src/turtlebot_key_controller/scripts" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/catkin_ws/src/turtlebot_controller/scripts" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

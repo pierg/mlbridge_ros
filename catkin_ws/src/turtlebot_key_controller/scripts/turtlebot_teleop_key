@@ -72,6 +72,8 @@ def controlAndActuateKey(key):
     global speed
     global turn
 
+    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+
     print "key = " + str(key)
     if key in moveBindings.keys():
         x = moveBindings[key][0]
@@ -141,12 +143,21 @@ if __name__=="__main__":
     try:
         while(1):
             controlAndActuateKey('')
-            time.sleep(0.1)
+            # time.sleep(0.1)
+
+            # Wait for Quit command from keybord (q) or timwout 0.1s
+            tty.setraw(sys.stdin.fileno())
+            rlist, _, _ = select.select([sys.stdin], [], [], 0.1)
+            key = ''
+            if rlist:
+                key = sys.stdin.read(1)
             termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
+
+            if key == 'q':
+                break
 
     except:
         print "Interrupt"
         pass
 
-    termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
-
+    print "Terminating.."

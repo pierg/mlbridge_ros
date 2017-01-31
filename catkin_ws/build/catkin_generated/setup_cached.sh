@@ -7,5 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PKG_CONFIG_PATH="/home/parallels/catkin_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD="/media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build"

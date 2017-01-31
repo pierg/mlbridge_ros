@@ -1348,6 +1348,24 @@ clean: turtlebot_controller/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir
 .PHONY : clean
 
 #=============================================================================
+# Directory level rules for directory turtlebot_key_controller
+
+# Convenience name for "all" pass in the directory.
+turtlebot_key_controller/all:
+
+.PHONY : turtlebot_key_controller/all
+
+# Convenience name for "clean" pass in the directory.
+turtlebot_key_controller/clean:
+
+.PHONY : turtlebot_key_controller/clean
+
+# Convenience name for "preinstall" pass in the directory.
+turtlebot_key_controller/preinstall:
+
+.PHONY : turtlebot_key_controller/preinstall
+
+#=============================================================================
 # Special targets to cleanup operation of make.
 
 # Special rule to run CMake to check the build system integrity.

@@ -57,3 +57,10 @@
 /media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_controller/CMakeFiles/geometry_msgs_generate_messages_py.dir
 /media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_controller/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir
 /media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_controller/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir
+/media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_key_controller/CMakeFiles/list_install_components.dir
+/media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_key_controller/CMakeFiles/install.dir
+/media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_key_controller/CMakeFiles/rebuild_cache.dir
+/media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_key_controller/CMakeFiles/install/strip.dir
+/media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_key_controller/CMakeFiles/install/local.dir
+/media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_key_controller/CMakeFiles/test.dir
+/media/psf/Dropbox/Projects/mlbridge_ros/catkin_ws/build/turtlebot_key_controller/CMakeFiles/edit_cache.dir

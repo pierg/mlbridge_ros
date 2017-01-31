@@ -1,2 +1,2 @@
-turtlebot_controller
+turtlebot_controller:turtlebot_key_controller
 -DCATKIN_DEVEL_PREFIX=/home/parallels/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/parallels/catkin_ws/install -G Unix Makefiles
